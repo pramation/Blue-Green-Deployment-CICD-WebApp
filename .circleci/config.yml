@@ -93,7 +93,7 @@ jobs:
              cd deploy_app
              make lint 
       - run:
-          name: run lint
+          name: build Docker
           command: |
              . .devops_capstone/bin/activate
              cd deploy_app
