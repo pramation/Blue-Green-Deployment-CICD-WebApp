@@ -1,8 +1,0 @@
-setuptools
-flask
-Flask-API
-pylint
-pylint-flask
-pytest
-pytest-flask
-wheel
