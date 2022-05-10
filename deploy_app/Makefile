@@ -18,8 +18,6 @@ install:
         chmod +x /bin/hadolint
 	
 	#Install docker
-	apk add --no-cache py-pip=9.0.0-r1
-	apk --no-cache add curl
 	pip install docker-compose==1.12.0 awscli=1.11.76
 test:
 	# Additional, optional, tests could go here
