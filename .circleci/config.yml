@@ -31,9 +31,9 @@ jobs:
           command: |
              . .devops_capstone/bin/activate
              make lint 
+      # run lint!
       - run:
-          name: run Docker
+          name: run lint
           command: |
              . .devops_capstone/bin/activate
-             pwd
-             sh ./run_docker.sh 
+             make all  
