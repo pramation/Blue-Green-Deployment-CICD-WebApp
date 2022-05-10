@@ -92,6 +92,7 @@ jobs:
           command: |
              . .devops_capstone/bin/activate
              cd deploy_app
+             docker --version
              make lint 
  
 workflows:
