@@ -28,7 +28,7 @@ lint:
 
 build-docker:
 	# Additional, optional, tests could go here
-	#python -m pytest -vv --cov=myrepolib tests/*.py
+	echo "Building Docker Image ..."
 	#python -m pytest --nbval notebook.ipynb
 
 all: install lint test
