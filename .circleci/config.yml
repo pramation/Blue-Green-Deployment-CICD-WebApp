@@ -74,9 +74,11 @@ jobs:
       - run:
           name: "install dependencies"
           command: |
-            pip install docker
+            
             python3 -m venv .devops_capstone
             source .devops_capstone/bin/activate
+            pip install docker
+            docker --version
             cd deploy_app
             make install
             # Install hadolint
