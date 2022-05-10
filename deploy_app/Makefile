@@ -18,7 +18,7 @@ install:
         chmod +x /bin/hadolint
 	
 	#Install docker
-	pip install docker-compose==1.12.0 awscli=1.11.76
+	pip install docker-compose==1.12.0 awscli==1.11.76
 test:
 	# Additional, optional, tests could go here
 	#python -m pytest -vv --cov=myrepolib tests/*.py
