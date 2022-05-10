@@ -29,6 +29,6 @@ lint:
 build-docker:
 	# Additional, optional, tests could go here
 	echo "Building Docker Image ..."
-	#python -m pytest --nbval notebook.ipynb
+	sh build_docker.sh
 
 all: install lint test
