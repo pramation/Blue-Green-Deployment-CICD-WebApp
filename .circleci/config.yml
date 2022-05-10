@@ -52,9 +52,19 @@ jobs:
           command: |
             cat .circleci/inventory.txt
       - destroy-environment:
-          workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}"     
+          workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}"    
+  nothing:  
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+          name: install required utilities
+          command: |
+             echo "hello world"
  
 workflows:
   default:
     jobs:
-     - deploy-infrastructure
+      - nothing
+     #- deploy-infrastructure
