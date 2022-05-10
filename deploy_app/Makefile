@@ -18,13 +18,17 @@ install:
         chmod +x /bin/hadolint
 	
 	#Install docker
+	echo "INstalling DOCKER..."
 	apt update
 	#apt install -y apt-transport-https ca-certificates curl software-properties-common
 	#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
         add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+	echo "cache policy docker-ce..."
 	apt-cache policy docker-ce
 	#apt install -y docker.io
+	echo "Installing docker-ce..."
 	apt install -y docker-ce
+	echo "Installed docker-ce..."
 	#systemctl status docker
 	docker --version
 test:
