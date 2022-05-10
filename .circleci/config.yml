@@ -64,16 +64,9 @@ jobs:
              echo "hello world"
   build:
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: python:3.7.3-stretch
     steps:
       - checkout
-      - run:
-          name: "install dependencies2"
-          command: |
-              apk add --no-cache py-pip=9.0.0-r1
-              apk add --no-cache python3
-              pip install docker-compose==1.12.0 awscli==1.11.76       
-
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "deploy_app/requirements.txt" }}
@@ -81,8 +74,8 @@ jobs:
       - run:
           name: "install dependencies"
           command: |
-            #python3 -m venv .devops_capstone
-            #source .devops_capstone/bin/activate
+            python3 -m venv .devops_capstone
+            source .devops_capstone/bin/activate
             cd deploy_app
             make install
             # Install hadolint
@@ -97,7 +90,7 @@ jobs:
       - run:
           name: run lint
           command: |
-             #. .devops_capstone/bin/activate
+             . .devops_capstone/bin/activate
              cd deploy_app
              make lint 
  
