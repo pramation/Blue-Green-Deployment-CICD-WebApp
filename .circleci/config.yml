@@ -71,10 +71,8 @@ jobs:
           name: "install dependencies2"
           command: |
               apk add --no-cache py-pip=9.0.0-r1
-              pip install docker-compose==1.12.0 awscli==1.11.76
-              apt-get -y -qq update
-              apt-get -y -qq install python3   
-              apt-get -qq install awscli         
+              apk add --no-cache python3
+              pip install docker-compose==1.12.0 awscli==1.11.76       
 
       - restore_cache:
           keys:
