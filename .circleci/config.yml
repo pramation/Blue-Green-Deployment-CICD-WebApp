@@ -74,6 +74,7 @@ jobs:
       - run:
           name: "install dependencies"
           command: |
+            pip install docker
             python3 -m venv .devops_capstone
             source .devops_capstone/bin/activate
             cd deploy_app
