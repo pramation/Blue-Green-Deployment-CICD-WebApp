@@ -15,7 +15,7 @@ jobs:
           name: "install dependencies"
           command: |
              python3 -m venv ~/.devops_capstone
-             source ~/.devops_capstone/bin/activate
+             . ~/.devops_capstone/bin/activate
              make install
              # Install hadolint
              wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
