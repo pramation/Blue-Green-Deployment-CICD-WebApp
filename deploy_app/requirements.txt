@@ -6,3 +6,4 @@ pylint-flask
 pytest
 pytest-flask
 wheel
+docker
