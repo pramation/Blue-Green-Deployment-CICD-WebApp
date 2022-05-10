@@ -36,4 +36,4 @@ Resources:
       ImageId: ami-04505e74c0741db8d 
       Tags:
         - Key: Name
-          Value: !Sub devsop-capstone-${ID}
+          Value: !Sub devops-capstone-${ID}
