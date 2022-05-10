@@ -76,6 +76,7 @@ jobs:
           command: |
             python3 -m venv .devops_capstone
             source .devops_capstone/bin/activate
+            cd deploy_app
             make install
             # Install hadolint
             wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
@@ -90,6 +91,7 @@ jobs:
           name: run lint
           command: |
              . .devops_capstone/bin/activate
+             cd deploy_app
              make lint 
  
 workflows:
