@@ -17,6 +17,10 @@ install:
 	wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
         chmod +x /bin/hadolint
 	
+	#Install docker
+	apk add --no-cache py-pip=9.0.0-r1
+	apk --no-cache add curl
+	pip install docker-compose==1.12.0 awscli=1.11.76
 test:
 	# Additional, optional, tests could go here
 	#python -m pytest -vv --cov=myrepolib tests/*.py
