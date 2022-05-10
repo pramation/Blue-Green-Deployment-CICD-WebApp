@@ -33,7 +33,7 @@ jobs:
              make lint 
       # run lint!
       - run:
-          name: run lint
+          name: run docker
           command: |
              . .devops_capstone/bin/activate
-             make all  
+             cat ./run_docker.sh  
