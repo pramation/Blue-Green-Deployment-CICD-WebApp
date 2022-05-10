@@ -1,7 +1,4 @@
 version: 2.1 
-orbs:
-  slack: circleci/slack@4.9.3 
-
 commands:
   destroy-environment:
     description: Destroy back-end and front-end cloudformation stacks given a workflow ID
@@ -77,8 +74,6 @@ jobs:
             
             python3 -m venv .devops_capstone
             source .devops_capstone/bin/activate
-            apt  install docker.io
-            docker --version
             cd deploy_app
             make install
             # Install hadolint
@@ -97,11 +92,11 @@ jobs:
              cd deploy_app
              make lint 
       - run:
-          name: build Docker
+#         name: build Docker
           command: |
              . .devops_capstone/bin/activate
              cd deploy_app
-             make build-docker 
+             #make build-docker 
  
 workflows:
   default:
