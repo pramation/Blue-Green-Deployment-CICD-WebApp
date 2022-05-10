@@ -81,8 +81,8 @@ jobs:
       - run:
           name: "install dependencies"
           command: |
-            python3 -m venv .devops_capstone
-            source .devops_capstone/bin/activate
+            #python3 -m venv .devops_capstone
+            #source .devops_capstone/bin/activate
             cd deploy_app
             make install
             # Install hadolint
@@ -97,7 +97,7 @@ jobs:
       - run:
           name: run lint
           command: |
-             . .devops_capstone/bin/activate
+             #. .devops_capstone/bin/activate
              cd deploy_app
              make lint 
  
