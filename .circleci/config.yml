@@ -59,7 +59,7 @@ jobs:
           name: install required utilities
           command: |
              echo "hello world"
-  build:
+  lint:
     docker:
       - image: python:3.7.3-stretch
     steps:
@@ -91,16 +91,29 @@ jobs:
              . .devops_capstone/bin/activate
              cd deploy_app
              make lint 
+  build:
+    working_directory: deploy_app
+    docker:
+      - image: docker:17.05.0-ce.git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+          - v1-dependencies- 
       - run:
-#         name: build Docker
+          name: "install dependencies"
           command: |
-             . .devops_capstone/bin/activate
-             cd deploy_app
-             #make build-docker 
+              apk add no-cache py-pip=9.0.0-r1
+              pip install docker-compose==1.12.0 awscli==1.11.76
+              make lint
+
  
 workflows:
   default:
     jobs:
       - nothing
      #- deploy-infrastructure
-      - build
+      - lint
+      - build 
