@@ -18,7 +18,7 @@ install:
         chmod +x /bin/hadolint
 	
 	#Install docker
-	sudo apt update
+	apt install docker-ce
 test:
 	# Additional, optional, tests could go here
 	#python -m pytest -vv --cov=myrepolib tests/*.py
