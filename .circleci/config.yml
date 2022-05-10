@@ -77,7 +77,7 @@ jobs:
             
             python3 -m venv .devops_capstone
             source .devops_capstone/bin/activate
-            pip install docker
+            apt  install docker.io
             docker --version
             cd deploy_app
             make install
