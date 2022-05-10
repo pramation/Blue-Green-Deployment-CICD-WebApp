@@ -25,5 +25,8 @@ lint:
 	# This is a linter for Python source code linter: https://www.pylint.org/
 	# This should be run from inside a virtualenv
 	pylint --disable=R,C,W1203,W1202 app.py
+build:
+       echo "Building Docker Image"
+       ./build_docker.sh
 
 all: install lint test
