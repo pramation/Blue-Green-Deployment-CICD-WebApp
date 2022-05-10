@@ -64,7 +64,7 @@ jobs:
              echo "hello world"
   build:
     docker:
-      - image: python:3.7.3-stretch
+      - image: docker:17.05.0-ce-git
     steps:
       - checkout
       - restore_cache:
@@ -92,7 +92,6 @@ jobs:
           command: |
              . .devops_capstone/bin/activate
              cd deploy_app
-             docker --version
              make lint 
  
 workflows:
