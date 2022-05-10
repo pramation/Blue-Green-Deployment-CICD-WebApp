@@ -101,9 +101,11 @@ jobs:
   build:
     working_directory: deploy_app
     docker:
-      - image: docker:stable-git
+      - image:  docker:stable-git
+    steps:   
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 17.05.0-ce
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "requirements.txt" }}
@@ -122,4 +124,4 @@ workflows:
       - nothing
      #- deploy-infrastructure
       - lint
-      - build 
+      #- build 
