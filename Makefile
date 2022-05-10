@@ -26,6 +26,6 @@ lint:
 	# This should be run from inside a virtualenv
 	pylint --disable=R,C,W1203,W1202 app.py
 run-docker:
-	./bin/run_docker.sh
+	sh run_docker.sh
 
 all: install lint test run-docker
