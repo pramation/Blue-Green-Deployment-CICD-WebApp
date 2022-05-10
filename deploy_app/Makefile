@@ -31,8 +31,9 @@ lint:
 	pylint --disable=R,C,W1203,W1202 app.py
 
 build-docker:
-	# Additional, optional, tests could go here
+	# Build Docker Image
 	echo "Building Docker Image ..."
-	sh build_docker.sh
+	docker --version
+	#sh build_docker.sh
 
 all: install lint test
