@@ -51,8 +51,8 @@ jobs:
             - ./.circleci/ansible/inventory.txt
           command: |
             cat .circleci/ansible/inventory.txt
-      - destroy-environment:
-          workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}"     
+      #- destroy-environment:
+         # workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}"     
  
 workflows:
   default:
