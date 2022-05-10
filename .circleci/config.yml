@@ -1,5 +1,6 @@
 version: 2.1
-
+orbs:
+  docker: circleci/docker@1.5.0
 jobs:
   build:
     docker:
@@ -9,7 +10,7 @@ jobs:
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "requirements.txt" }}
-          #- v1-dependencies-  
+          - v1-dependencies-  
       - run:
           name: "install dependencies"
           command: |
