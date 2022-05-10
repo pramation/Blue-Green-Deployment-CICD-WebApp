@@ -35,4 +35,4 @@ jobs:
           name: run Docker
           command: |
              . .devops_capstone/bin/activate
-             ./run_docker.sh 
+             sh run_docker.sh 
