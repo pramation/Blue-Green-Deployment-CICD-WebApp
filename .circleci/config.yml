@@ -1,0 +1,60 @@
+version: 2.1 
+orbs:
+  slack: circleci/slack@4.9.3 
+
+commands:
+  destroy-environment:
+    description: Destroy back-end and front-end cloudformation stacks given a workflow ID
+    parameters:
+      workflow-id:
+        type: string
+        default: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}"
+    steps:
+      - run:
+          name: Destroy environment and delete s3 bucket
+          when: on_fail
+          command: |
+            aws cloudformation delete-stack --stack-name devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}
+            aws s3 rm s3://udapeople-project4-${CIRCLE_WORKFLOW_ID:0:7} --recursive
+            aws s3 rb s3://udapeople-project4-${CIRCLE_WORKFLOW_ID:0:7} --force
+
+jobs:
+  deploy-infrastructure:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - run:
+          name: install required utilities
+          command: |
+             yum install tar -y
+             yum install gzip -y
+      - run:
+          name: Ensure back-end infrastructure exists
+          command: |
+            aws cloudformation deploy \
+              --template-file .circleci/build_server.yml \
+              --tags project="devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --stack-name "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  
+      - run:
+          name: Add back-end ip to ansible inventory
+          command: |
+            aws ec2 describe-instances \
+              --query 'Reservations[*].Instances[*].PublicIpAddress' \
+              --filters "Name=tag:Name,Values=devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --output text >> .circleci/ansible/inventory.txt
+            cat .circleci/ansible/inventory.txt       
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./.circleci/ansible/inventory.txt
+          command: |
+            cat .circleci/ansible/inventory.txt
+      - destroy-environment:
+          workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}"     
+ 
+workflows:
+  default:
+    jobs:
+  #    - deploy-infrastructure
