@@ -14,6 +14,8 @@ jobs:
       - run:
           name: "install dependencies"
           command: |
+            sudo apt-get update
+            sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
             python3 -m venv .devops_capstone
             source .devops_capstone/bin/activate
             make install
@@ -31,7 +33,7 @@ jobs:
           command: |
              . .devops_capstone/bin/activate
              make lint 
-      # run lint!
+      # run Docker!
       - run:
           name: run docker
           command: |
