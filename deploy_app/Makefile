@@ -12,7 +12,6 @@ install:
 	#source ~/.devops_capstone/bin/activate
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
-	apt install docker.io
 test:
 	# Additional, optional, tests could go here
 	#python -m pytest -vv --cov=myrepolib tests/*.py
