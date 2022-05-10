@@ -4,7 +4,6 @@
 
 # Step 1:
 # This is your Docker ID/path
-# dockerpath=<>
 dockerpath="pramation/capstoneproj"
 
 # Step 2
