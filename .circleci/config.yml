@@ -101,8 +101,7 @@ jobs:
   build:
     working_directory: deploy_app
     docker:
-      - image: docker:17.05.0-ce.git
-    steps:
+      - image: docker:stable-git
       - checkout
       - setup_remote_docker
       - restore_cache:
@@ -123,4 +122,4 @@ workflows:
       - nothing
      #- deploy-infrastructure
       - lint
-      #- build 
+      - build 
