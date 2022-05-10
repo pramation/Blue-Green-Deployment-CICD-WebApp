@@ -80,7 +80,7 @@ jobs:
       - run:
           name: "install dependencies"
           command: |
-            python3 -m venv .devops_capstone
+            python -m venv .devops_capstone
             source .devops_capstone/bin/activate
             cd deploy_app
             make install
