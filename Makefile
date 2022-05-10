@@ -12,7 +12,7 @@ setup:
 
 install:
 	# This should be run from inside a virtualenv
-	source ~/.devops_capstone/bin/activate
+	#source ~/.devops_capstone/bin/activate
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
 
