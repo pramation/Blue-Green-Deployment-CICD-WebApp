@@ -124,5 +124,5 @@ workflows:
     jobs:
       - nothing
      #- deploy-infrastructure
-     # - lint
-      - build 
+      - lint
+     # - build 
