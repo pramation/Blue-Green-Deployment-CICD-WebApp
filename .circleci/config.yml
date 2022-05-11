@@ -100,7 +100,6 @@ jobs:
              cd deploy_app
              make build-docker 
   build:
-    working_directory: deploy_app
     docker:
       - image: docker:17.05.0-ce-git
       #- image:  cimg/go:1.17
@@ -120,6 +119,7 @@ jobs:
       - run:
           name: "build docker Image"
           command: |
+              . .devops_capstone/bin/activate
               cd deploy_app
               echo "Building Docker Image..."
               docker build --tag=capstoneproj app.py
