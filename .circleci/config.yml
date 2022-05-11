@@ -116,7 +116,7 @@ jobs:
           name: "install docker"
           command: |
               apk add --no-cache curl jq python3 py3-pip
-              apk add docker-cli
+              apk add docker
       - run:
           name: "build docker Image"
           command: |
