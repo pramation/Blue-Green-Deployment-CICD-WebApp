@@ -104,9 +104,9 @@ jobs:
     docker:
       #- image: docker:17.05.0-ce-git
       - image:  cimg/go:1.17
-        auth: 
-           username: $DOCKERHUB_USERNAME
-           password: $DOCKERHUB_PASSWORD
+        #auth: 
+        #   username: $DOCKERHUB_USERNAME
+        #   password: $DOCKERHUB_PASSWORD
     steps:   
       - checkout
       - setup_remote_docker:
