@@ -130,4 +130,4 @@ workflows:
       - nothing
      #- deploy-infrastructure
       - lint
-     # - build 
+      - build 
