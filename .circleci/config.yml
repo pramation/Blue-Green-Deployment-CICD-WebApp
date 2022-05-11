@@ -119,7 +119,6 @@ jobs:
       - run:
           name: "build docker Image"
           command: |
-              . .devops_capstone/bin/activate
               cd deploy_app
               echo "Building Docker Image..."
               docker build --tag=capstoneproj app.py
