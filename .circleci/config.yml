@@ -78,9 +78,6 @@ jobs:
             cd deploy_app
             uname -a
             make install
-            # Install hadolint
-            #wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
-            #chmod +x /bin/hadolint
       - save_cache:
           paths:
            - ./.devops_capstone
@@ -93,13 +90,9 @@ jobs:
              . .devops_capstone/bin/activate
              cd deploy_app
              make lint 
-  build:
+  build_docker:
     docker:
       - image: docker:17.05.0-ce-git
-      #- image:  cimg/go:1.17
-        #auth: 
-        #   username: $DOCKERHUB_USERNAME
-        #   password: $DOCKERHUB_PASSWORD
     steps:   
       - checkout
       - setup_remote_docker:
@@ -124,12 +117,12 @@ jobs:
               docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker image tag capstoneproj $dockerpath
               # Push image to a docker repository
               docker image push $dockerpath
-      #- run:
-      #    name: "Run docker Image"
-      #    command: |
-      #        cd deploy_app
-      #        echo "Run Docker Image..."
-      #        docker run -p 8080:8080 capstoneproj
+      - run:
+          name: "Run docker Image"
+          command: |
+              cd deploy_app
+              echo "Run Docker Image..."
+              docker run -p 8080:8080 capstoneproj &
 
  
 workflows:
@@ -138,4 +131,4 @@ workflows:
       - nothing
      #- deploy-infrastructure
       - lint
-      - build 
+      - build_docker 
