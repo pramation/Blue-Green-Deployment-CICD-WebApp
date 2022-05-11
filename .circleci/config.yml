@@ -120,6 +120,7 @@ jobs:
       - run:
           name: "build docker Image"
           command: |
+              cd deploy_app
               echo "Building Docker Image..."
               docker build --tag=capstoneproj app.py
               echo "List Image..."
