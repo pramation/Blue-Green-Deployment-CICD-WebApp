@@ -122,7 +122,8 @@ jobs:
           command: |
               cd deploy_app
               echo "Run Docker Image..."
-              docker run -p 8080:8080 capstoneproj 
+              #docker run -p 8080:8080 capstoneproj 
+              make lint
 
  
 workflows:
