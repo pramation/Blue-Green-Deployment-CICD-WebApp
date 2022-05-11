@@ -121,7 +121,7 @@ jobs:
           command: |
               cd deploy_app
               echo "Building Docker Image..."
-              docker build --tag=capstoneproj app.py
+              docker build --tag=capstoneproj /root/project/app/app.py
               echo "List Image..."
               docker image ls
 
