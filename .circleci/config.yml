@@ -123,13 +123,13 @@ jobs:
               echo "Docker ID and Image: $dockerpath"
               docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD && docker image tag capstoneproj $dockerpath
               # Push image to a docker repository
-              #docker image push $dockerpath
-      - run:
-          name: "Run docker Image"
-          command: |
-              cd deploy_app
-              echo "Run Docker Image..."
-              docker run -p 8080:8080 capstoneproj
+              docker image push $dockerpath
+      #- run:
+      #    name: "Run docker Image"
+      #    command: |
+      #        cd deploy_app
+      #        echo "Run Docker Image..."
+      #        docker run -p 8080:8080 capstoneproj
 
  
 workflows:
