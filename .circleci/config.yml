@@ -101,22 +101,22 @@ jobs:
   build:
     working_directory: deploy_app
     docker:
-      - image:  docker:stable-git
+      - image:  cimg/go:1.17
+        auth: 
+           username: pramation
+           password: 'xyz'
     steps:   
       - checkout
       - setup_remote_docker:
-          version: 17.05.0-ce
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}
-          - v1-dependencies- 
+          version: 20.10.14
+          docker_layer_caching: true
       - run:
-          name: "install dependencies"
+          name: "build docker Image"
           command: |
-              apk add no-cache py-pip=9.0.0-r1
-              pip install docker-compose==1.12.0 awscli==1.11.76
-              #make lint
-              docker --version
+              echo "Building Docker Image..."
+              docker build --tag=capstoneproj app.py
+              echo "List Image..."
+              docker image ls
 
  
 workflows:
