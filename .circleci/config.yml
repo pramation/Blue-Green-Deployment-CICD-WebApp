@@ -102,21 +102,21 @@ jobs:
   build:
     working_directory: deploy_app
     docker:
-      - image: docker:17.05.0-ce-git
-      #- image:  cimg/go:1.17
-        #auth: 
-        #   username: $DOCKERHUB_USERNAME
-        #   password: $DOCKERHUB_PASSWORD
+      #- image: docker:17.05.0-ce-git
+      - image:  cimg/go:1.17
+        auth: 
+           username: $DOCKERHUB_USERNAME
+           password: $DOCKERHUB_PASSWORD
     steps:   
       - checkout
       - setup_remote_docker:
           version: 20.10.14
           docker_layer_caching: true
-      - run:
-          name: "install docker"
-          command: |
-              apk add --no-cache curl jq python3 py3-pip
-              apk add docker
+      #- run:
+      #    name: "install docker"
+      #    command: |
+      #        apk add --no-cache curl jq python3 py3-pip
+      #        apk add docker
       - run:
           name: "build docker Image"
           command: |
