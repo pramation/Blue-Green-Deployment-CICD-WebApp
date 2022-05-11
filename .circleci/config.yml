@@ -130,6 +130,6 @@ workflows:
   default:
     jobs:
       - nothing
-     #- deploy-infrastructure
+      - deploy-infrastructure
       - lint
       - build_docker 
