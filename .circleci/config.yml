@@ -123,7 +123,7 @@ jobs:
               echo "Docker ID and Image: $dockerpath"
               echo $$DOCKERHUB_PASSWORD |docker login -u $DOCKERHUB_USERNAME --password-stdin && docker image tag capstoneproj $dockerpath
               # Push image to a docker repository
-              docker image push $dockerpath
+              #docker image push $dockerpath
       - run:
           name: "Run docker Image"
           command: |
