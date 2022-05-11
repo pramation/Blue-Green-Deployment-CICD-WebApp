@@ -93,12 +93,6 @@ jobs:
              . .devops_capstone/bin/activate
              cd deploy_app
              make lint 
-      - run:
-          name: build Docker
-          command: |
-             . .devops_capstone/bin/activate
-             cd deploy_app
-             make build-docker 
   build:
     docker:
       - image: docker:17.05.0-ce-git
@@ -111,11 +105,6 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
           docker_layer_caching: true
-      #- run:
-      #    name: "install docker"
-      #    command: |
-      #        apk add --no-cache curl jq python3 py3-pip
-      #        apk add docker
       - run:
           name: "build docker Image"
           command: |
@@ -124,6 +113,12 @@ jobs:
               docker build --tag=capstoneproj /root/project/deploy_app
               echo "List Image..."
               docker image ls
+      - run:
+          name: "build docker Image"
+          command: |
+              cd deploy_app
+              echo "Run Docker Image..."
+              docker run -p 8080:8080 capstoneproj
 
  
 workflows:
