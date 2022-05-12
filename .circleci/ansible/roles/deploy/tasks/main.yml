@@ -35,6 +35,6 @@
 - name: "install kubectl-2"
   become: true
   command: mv kubectl /usr/local/bin/kubectl
-- name: "test env"
+- name: "minikube start"
   become: false
-  command: echo "Hello" > /home/ubuntu/hello.txt
+  command: minikube start
