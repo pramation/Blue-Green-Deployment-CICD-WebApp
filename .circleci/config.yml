@@ -81,7 +81,7 @@ jobs:
             echo "Contents  of the inventory.txt file is --------"
             cat inventory.txt
             export ANSIBLE_HOST_KEY_CHECKING=false
-            ansible-playbook -i inventory.txt deploy_app.yml 
+            ansible-playbook -i inventory.txt deploy_app.yml --extra-vars {'external_ip':'18.208.184.54'}
   lint:
     docker:
       - image: python:3.7.3-stretch
