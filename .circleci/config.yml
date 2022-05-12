@@ -84,7 +84,7 @@ jobs:
             export EXTERNAL_IP="`cat inventory.txt|grep -v web`"
             echo "external_ip=${EXTERNAL_IP}"
             export ANSIBLE_HOST_KEY_CHECKING=false
-            #ansible-playbook -i inventory.txt deploy_app.yml --extra-vars "external_ip=${EXTERNAL_IP}"
+            ansible-playbook -i inventory.txt deploy_app.yml --extra-vars "external_ip=${EXTERNAL_IP}"
   lint:
     docker:
       - image: python:3.7.3-stretch
