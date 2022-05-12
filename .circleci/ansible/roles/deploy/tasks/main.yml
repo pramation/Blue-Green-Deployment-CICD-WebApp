@@ -12,3 +12,13 @@
   apt:
     name: ["conntrack"]
     update_cache: yes
+- name: "install curl,wget,aot-transport-https."
+  become: true
+  apt:
+    name: ["curl","wget","apt-transport-https"]
+    update_cache: yes
+- name: "install kubectl"
+  become: true
+  command: npm install
+  args:
+    chdir: /home/ubuntu/backend
