@@ -24,4 +24,7 @@
     dest: /home/ubuntu
 - name: "install minikube-2"
   become: true
-  command: cp minikube-linux-amd64 /usr/local/bin/minikube && chmod 755 /usr/local/bin/minikube
+  command: cp minikube-linux-amd64 /usr/local/bin/minikube
+- name: "install minikube-3"
+  become: true
+  command: chmod 755 /usr/local/bin/minikube
