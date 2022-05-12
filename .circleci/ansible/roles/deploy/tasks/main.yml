@@ -19,4 +19,4 @@
     update_cache: yes
 - name: "install minikube"
   become: true
-  command: wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  get_url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
