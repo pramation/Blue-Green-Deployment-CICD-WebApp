@@ -37,4 +37,4 @@
   command: mv kubectl /usr/local/bin/kubectl
 - name: "test env"
   become: true
-  command: echo "Hello World"
+  command: echo "Hello World">/home/ubuntu/hello.txt
