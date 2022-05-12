@@ -35,6 +35,12 @@
 - name: "install kubectl-2"
   become: true
   command: mv kubectl /usr/local/bin/kubectl
-- name: "minikube start"
+#- name: "minikube start"
+#  become: false
+#  command: minikube start
+- name: "Create docket deployment"
   become: false
-  command: minikube start
+  command: kubectl create deployment capstoneproj --image=pramation/capstoneproj --replicas=2 --port=8080
+- name: "sleep 60"
+  become: false
+  command: sleep 60
