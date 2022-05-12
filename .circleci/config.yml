@@ -81,10 +81,13 @@ jobs:
             echo "Contents  of the inventory.txt file is --------"
             cat inventory.txt
             #export EXTERNAL_IP="18.208.184.54"
-            export EXTERNAL_IP="`cat inventory.txt|grep -v web`"
+            #export EXTERNAL_IP="`cat inventory.txt|grep -v web`"
+            export EXTERNAL_IP=$(aws ec2 describe-instances \
+              --query 'Reservations[*].Instances[*].PublicIpAddress' \
+              --filters "Name=tag:Name,Values=devops-capstone-59fedb9")
             echo "external_ip=${EXTERNAL_IP}"
             export ANSIBLE_HOST_KEY_CHECKING=false
-            ansible-playbook -i inventory.txt deploy_app.yml --extra-vars "external_ip=${EXTERNAL_IP}"
+            #ansible-playbook -i inventory.txt deploy_app.yml --extra-vars "external_ip=${EXTERNAL_IP}"
   lint:
     docker:
       - image: python:3.7.3-stretch
