@@ -31,7 +31,7 @@
     mode: 0755
 - name: "install minikube-2"
   become: true
-  command:cp -p minikube-linux-amd64 /usr/local/bin/minikube
+  command: mv minikube-linux-amd64 /usr/local/bin/minikube
 - name: "install kubectl-2"
   become: true
-  command: mv kubectl /usr/local/bin/.
+  command: mv kubectl /usr/local/bin/kubectl
