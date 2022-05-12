@@ -17,8 +17,6 @@
   apt:
     name: ["curl","wget","apt-transport-https"]
     update_cache: yes
-- name: "install kubectl"
+- name: "install minikube"
   become: true
-  command: npm install
-  args:
-    chdir: /home/ubuntu/backend
+  command: echo pwd&&wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && cp minikube-linux-amd64 /usr/local/bin/minikube
