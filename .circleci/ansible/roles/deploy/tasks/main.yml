@@ -18,5 +18,8 @@
     name: ["curl","wget","apt-transport-https"]
     update_cache: yes
 - name: "install minikube"
-  become: true
-  get_url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  become: false
+  get_url: 
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: /home/ubuntu
+    
