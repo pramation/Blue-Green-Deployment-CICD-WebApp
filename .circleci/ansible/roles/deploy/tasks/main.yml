@@ -7,10 +7,10 @@
   apt:
     name: ["docker"]
     update_cache: yes
-- name: "install conntrack."
+- name: "install conntrack for minikube."
   become: true
   apt:
-    name: ["conntrack for minikube"]
+    name: ["conntrack"]
     update_cache: yes
 - name: "install curl,wget,aot-transport-https."
   become: true
