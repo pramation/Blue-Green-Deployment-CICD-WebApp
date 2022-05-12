@@ -76,8 +76,10 @@ jobs:
           command: |
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
-              --filters "Name=tag:Name,Values=devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --filters "Name=tag:Name,Values=devops-capstone-cb7171d" \
               --output text >> .circleci/inventory.txt
+            #--filters "Name=tag:Name,Values=devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
+            cat .circleci/inventory.txt
       - run:
           name: Deploy backend
           no_output_timeout: 5m
@@ -89,7 +91,7 @@ jobs:
             export EXTERNAL_IP="`cat inventory.txt|grep -v web`"
             echo "external_ip=${EXTERNAL_IP}"
             export ANSIBLE_HOST_KEY_CHECKING=false
-            ansible-playbook -i inventory.txt deploy_app.yml --extra-vars "external_ip=${EXTERNAL_IP}"
+            #ansible-playbook -i inventory.txt deploy_app.yml --extra-vars "external_ip=${EXTERNAL_IP}"
       - destroy-environment:
           workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" 
   linting:
@@ -162,11 +164,11 @@ jobs:
 workflows:
   default:
     jobs:
-      - linting
-      - build_docker_image: 
-         requires: [linting]
-      - deploy-infrastructure: 
-          requires: [build_docker_image]
-      - deploy_app_in_kube:
-          requires: [deploy-infrastructure]
+      #- linting
+      #- build_docker_image: 
+      #   requires: [linting]
+      #- deploy-infrastructure: 
+      #    requires: [build_docker_image]
+      - deploy_app_in_kube
+        #  requires: [deploy-infrastructure]
 
