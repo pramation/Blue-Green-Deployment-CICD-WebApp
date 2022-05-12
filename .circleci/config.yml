@@ -59,6 +59,11 @@ jobs:
           name: install required utilities
           command: |
              echo "hello world"
+      - add_ssh_keys:
+          fingerprints: 
+            - "41:99:c0:f0:e0:26:82:51:4e:26:cd:16:7d:05:90:36"
+      - attach_workspace:
+          at: .circleci/ansible
       - run:
           name: Install dependencies 
           command: |
