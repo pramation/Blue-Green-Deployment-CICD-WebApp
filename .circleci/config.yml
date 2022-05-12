@@ -52,13 +52,22 @@ jobs:
           workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}"    
   nothing:  
     docker:
-      - image: amazon/aws-cli
+      - image: python:3.7-alpine3.11
     steps:
       - checkout
       - run:
           name: install required utilities
           command: |
              echo "hello world"
+      - run:
+          name: Install dependencies 
+          command: |
+            apk add --update ansible
+            apk add --no-cache curl
+            apk add --update tar gzip
+            apk add --no-cache openssh-client
+            apk add --no-cache --upgrade bash
+            pip install awscli
       - run:
           name: Deploy backend
           no_output_timeout: 5m
