@@ -5,7 +5,7 @@
 - name: "install Docker."
   become: true
   apt:
-    name: ["docker"]
+    name: ["docker.io"]
     update_cache: yes
 - name: "install conntrack for minikube."
   become: true
