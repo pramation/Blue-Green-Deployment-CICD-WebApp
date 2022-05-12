@@ -38,14 +38,14 @@ jobs:
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:Name,Values=devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --output text >> .circleci/inventory.txt
-            cat .circleci/inventory.txt       
+              --output text >> .circleci/ansible/inventory.txt
+            cat .circleci/ansible/inventory.txt       
       - persist_to_workspace:
           root: .
           paths:
-            - ./.circleci/inventory.txt
+            - ./.circleci/ansible/inventory.txt
           command: |
-            cat .circleci/inventory.txt
+            cat .circleci/ansible/inventory.txt
       - destroy-environment:
           workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}"    
   deploy_app_in_kube:  
@@ -74,12 +74,15 @@ jobs:
       - run:
           name: Add back-end ip to ansible inventory
           command: |
+           echo "***"
+           cat .circleci/ansible/inventory.txt
+           echo "***"
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
-              --filters "Name=tag:Name,Values=devops-capstone-cb7171d" \
+              --filters "Name=tag:Name,Values=devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
               --output text >> .circleci/inventory.txt
-            #--filters "Name=tag:Name,Values=devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
-            cat .circleci/inventory.txt
+
+            cat .circleci/ansible/inventory.txt
       - run:
           name: Deploy backend
           no_output_timeout: 5m
@@ -159,16 +162,14 @@ jobs:
               echo "Run Docker Image..."
               #docker run -p 8080:8080 capstoneproj 
 
-
- 
 workflows:
   default:
     jobs:
-      #- linting
-      #- build_docker_image: 
-      #   requires: [linting]
-      #- deploy-infrastructure: 
-      #    requires: [build_docker_image]
-      - deploy_app_in_kube
-        #  requires: [deploy-infrastructure]
+      - linting
+      - build_docker_image: 
+         requires: [linting]
+      - deploy-infrastructure: 
+          requires: [build_docker_image]
+      - deploy_app_in_kube:
+          requires: [deploy-infrastructure]
 
