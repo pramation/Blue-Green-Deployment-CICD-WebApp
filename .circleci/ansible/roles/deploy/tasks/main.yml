@@ -22,10 +22,3 @@
   get_url: 
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     dest: /home/ubuntu
-- name: "install minikube-2"
-  become: true
-  command: cp -p minikube-linux-amd64 /usr/local/bin/minikube
-  become: false
-  get_url: 
-    url: https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl
-    dest: /home/ubuntu
