@@ -38,6 +38,9 @@
 - name: "change permission of docker loc file"
   become: true
   command: chmod o+rw /var/run/docker.sock
+- name: "minikube delete"
+  become: false
+  command: minikube delete
 - name: "minikube start"
   become: false
   command: minikube start
