@@ -22,4 +22,4 @@
   get_url: 
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     dest: /home/ubuntu
-    mode: 755
+    mode: 0755
