@@ -55,7 +55,7 @@
   command: sleep 60
 - name: "Expose port to external-ip"
   become: false
-  command: kubectl expose deployment/capstoneproj --type="NodePort" --port 8080  --external-ip='18.208.184.54'  --target-port=8080
+  command: kubectl expose deployment/capstoneproj --type="NodePort" --port 8080  --external-ip='{{external_ip}}'  --target-port=8080
 - name: "sleep 30"
   become: false
   command: sleep 30
