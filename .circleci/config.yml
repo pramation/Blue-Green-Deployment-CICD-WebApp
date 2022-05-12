@@ -61,7 +61,7 @@ jobs:
              echo "hello world"
       - add_ssh_keys:
           fingerprints: 
-            - "36:4f:98:18:41:6f:14:56:a7:f4:1e:f7:d0:6a:fd:97"
+            - "48:67:98:14:ef:00:4f:d3:fc:94:d0:44:f5:15:da:f1"
       - attach_workspace:
           at: .circleci/ansible
       - run:
