@@ -72,6 +72,13 @@ jobs:
             apk add --no-cache --upgrade bash
             pip install awscli
       - run:
+          name: Add back-end ip to ansible inventory
+          command: |
+            aws ec2 describe-instances \
+              --query 'Reservations[*].Instances[*].PublicIpAddress' \
+              --filters "Name=tag:Name,Values=devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --output text >> .circleci/inventory.txt
+      - run:
           name: Deploy backend
           no_output_timeout: 5m
           command: |
