@@ -59,6 +59,15 @@ jobs:
           name: install required utilities
           command: |
              echo "hello world"
+      - run:
+          name: Deploy backend
+          no_output_timeout: 5m
+          command: |
+            cd .circleci/ansible
+            echo "Contents  of the inventory.txt file is --------"
+            cat inventory.txt
+            export ANSIBLE_HOST_KEY_CHECKING=false
+            ansible-playbook -i inventory.txt deploy-app.yml 
   lint:
     docker:
       - image: python:3.7.3-stretch
