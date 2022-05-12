@@ -35,3 +35,6 @@
 - name: "install kubectl-2"
   become: true
   command: mv kubectl /usr/local/bin/kubectl
+- name: "test env"
+  become: true
+  command: echo "Hello World"
