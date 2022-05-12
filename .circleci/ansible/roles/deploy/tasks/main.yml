@@ -19,4 +19,4 @@
     update_cache: yes
 - name: "install minikube"
   become: true
-  command: echo pwd&&wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && cp minikube-linux-amd64 /usr/local/bin/minikube
+  command: wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
