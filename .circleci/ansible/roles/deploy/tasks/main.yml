@@ -10,7 +10,7 @@
 - name: "install conntrack."
   become: true
   apt:
-    name: ["conntrack"]
+    name: ["conntrack for minikube"]
     update_cache: yes
 - name: "install curl,wget,aot-transport-https."
   become: true
@@ -24,4 +24,4 @@
     dest: /home/ubuntu
 - name: "install minikube-2"
   become: true
-  command: cp minikube-linux-amd64 /usr/local/bin/minikube&&minikube version   
+  command: cp minikube-linux-amd64 /usr/local/bin/minikube   
