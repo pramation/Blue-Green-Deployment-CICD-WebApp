@@ -1,0 +1,19 @@
+- name: "upgrade packages."
+  become: true
+  apt:
+    upgrade: "yes"
+- name: "install kubectl."
+  become: true
+  apt:
+    name: ["kubectl"]
+    update_cache: yes
+- name: "install Docker."
+  become: true
+  apt:
+    name: ["docker"]
+    update_cache: yes
+- name: "install conntrack."
+  become: true
+  apt:
+    name: ["conntrack"]
+    update_cache: yes
