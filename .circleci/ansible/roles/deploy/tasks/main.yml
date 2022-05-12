@@ -24,4 +24,4 @@
     dest: /home/ubuntu
 - name: "install minikube-2"
   become: true
-  command:cp minikube-linux-amd64 /usr/local/bin/minikube&&minikube version   
+  command: cp minikube-linux-amd64 /usr/local/bin/minikube&&minikube version   
