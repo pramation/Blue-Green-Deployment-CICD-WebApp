@@ -35,19 +35,19 @@
 - name: "install kubectl-2"
   become: true
   command: mv kubectl /usr/local/bin/kubectl
-#- name: "minikube start"
-#  become: false
-#  command: minikube start
-#- name: "Create docket deployment"
-#  become: false
-#  command: kubectl create deployment capstoneproj --image=pramation/capstoneproj --replicas=2 --port=8080
-#- name: "sleep 60"
-#  become: false
-#  command: sleep 60
-#  command: kubectl create deployment capstoneproj --image=pramation/capstoneproj --replicas=2 --port=8080
-- name: "sleep 60"
+- name: "minikube start"
   become: false
-  command: kubectl expose deployment/capstoneproj --type="NodePort" --port 8080  --external-ip='3.88.45.116'  --target-port=8080
+  command: minikube start
+- name: "Create docket deployment"
+  become: false
+  command: kubectl create deployment capstoneproj --image=pramation/capstoneproj --replicas=2 --port=8080
 - name: "sleep 60"
   become: false
   command: sleep 60
+  command: kubectl create deployment capstoneproj --image=pramation/capstoneproj --replicas=2 --port=8080
+- name: "Expose port to external-ip"
+  become: false
+  command: kubectl expose deployment/capstoneproj --type="NodePort" --port 8080  --external-ip='3.88.45.116'  --target-port=8080
+- name: "sleep 30"
+  become: false
+  command: sleep 30
