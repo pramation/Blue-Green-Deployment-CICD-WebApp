@@ -80,7 +80,7 @@ jobs:
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:Name,Values=devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --output text >> .circleci/inventory.txt
+              --output text >> .circleci/ansible/inventory.txt
 
             cat .circleci/ansible/inventory.txt
       - run:
