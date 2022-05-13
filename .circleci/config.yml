@@ -126,7 +126,7 @@ jobs:
             cat inventory.txt
             export EXTERNAL_IP="54.209.246.249"
             #export EXTERNAL_IP="`cat inventory.txt|grep -v web`"
-            echo "<meta http-equiv="refresh" content="7; url='http://${EXTERNAL_IP}:8080'" />">index.html
+            echo "<meta http-equiv=\"refresh\" content=\"7; url='http://${EXTERNAL_IP}:8080'\" />">index.html
             aws s3 cp ./index.html "s3://devops-capstone-s3 
       - destroy-environment:
           workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" 
