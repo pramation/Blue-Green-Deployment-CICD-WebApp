@@ -125,7 +125,7 @@ jobs:
             echo ${XYZ} > ./index.html
             cat ./index.html
             #echo "<meta http-equiv=\"refresh\" content=\"7; url='http://${EXTERNAL_IP}:8080'\" />">index.html
-            #aws s3 cp ./index.html "s3://devops-capstone-s3 
+            aws s3 cp ./index.html "s3://devops-capstone-s3 
       - destroy-environment:
           workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" 
   linting:
