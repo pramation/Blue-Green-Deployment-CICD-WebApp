@@ -100,6 +100,15 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install dependencies 
+          command: |
+            apk add --update ansible
+            apk add --no-cache curl
+            apk add --update tar gzip
+            apk add --no-cache openssh-client
+            apk add --no-cache --upgrade bash
+            pip install awscli
+      - run:
           name: get server-ip
           command: |
             aws ec2 describe-instances \
