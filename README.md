@@ -79,11 +79,11 @@ The project includes the following main tasks:
 
 The whole pipeline is initiated and executed by running the capstone-devops project in CircleCI.  The jobs and its dependencies of this pipeline is as follows:  
 1.`linting`: This job is to verify for errors in the application setup in the Dockerfile  
-      * This job sets up the environment.  
-      * Installs the dependent libraries using `requirement.txt`. (cmd: make install)  
-      * Runs lint to verify for issues, uses hadolint. (cmd: make lint)  
-      * Files used `Makefile`, `Dockerfile`,`app.py` & `requirement.txt`  
-      * No other job dependency, this is the first job.  
+* This job sets up the environment.  
+* Installs the dependent libraries using `requirement.txt`. (cmd: make install)  
+* Runs lint to verify for issues, uses hadolint. (cmd: make lint)  
+* Files used `Makefile`, `Dockerfile`,`app.py` & `requirement.txt`  
+* No other job dependency, this is the first job.  
 2. `build_docker_image`: builds docker image and publishes to the dockerhub repository.Uses docker:17.05.0-ce-git as its CircleCI image.  
       * Setup remote Docker Engine.  
       * Build Docker image.Uses files in deploy_app folder. (cmd: docker build --tag=<tag> <path>/deploy_app)  
