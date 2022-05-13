@@ -25,11 +25,11 @@ The project includes the following main tasks:
 * Initialize the Python virtual environment:  `make setup`
 * Install all necessary dependencies:  `make install`
 * Test the project's code using linting:  `make lint`
-   * Above three tasks needs the following files to be created first and made available in the folder `deploy_app`:
-               - `Makefile`   
-               - `Dockerfile`  
-               - `requirements.txt`  
-               - `app.py`  
+   * Above three tasks needs the following files to be created first and made available in the folder `deploy_app`:  
+               * `Makefile`   
+               * `Dockerfile`  
+               * `requirements.txt`  
+               * `app.py`  
 # 2. Containarize the application  in Docker and upload to the dockerhub         
 * Create Docker container for the [hello world](/deploy_app/app.py) application: [Dockerfile](deploy_app/Dockerfile)
 * Publish the Docker Container to a public Docker Registry:
@@ -77,43 +77,43 @@ The project includes the following main tasks:
 * [build_server.yml](.circleci/build_server.yml): build EC2 cloudformation template file
 * [deploy_app.py](./circleci/ansible/deploy_app.yml): builds Kubernetis environment using this playbook by Ansible.
 
-The whole pipeline is initiated and executed by running the capstone-devops project in CircleCI. The jobs and its dependencies of this pipeline is as follows:
-1.`linting`: This job is to verify for errors in the application setup in the Dockerfile
-      * This job sets up the environment.
-      * Installs the dependent libraries using `requirement.txt`. (cmd: make install)
-      * Runs lint to verify for issues, uses hadolint. (cmd: make lint)
-      * Files used `Makefile`, `Dockerfile`,`app.py` & `requirement.txt`
-      * No other job dependency, this is the first job.
-2. `build_docker_image`: builds docker image and publishes to the dockerhub repository.Uses docker:17.05.0-ce-git as its CircleCI image.
-      * Setup remote Docker Engine.
-      * Build Docker image.Uses files in deploy_app folder. (cmd: docker build --tag=<tag> <path>/deploy_app)
-      * Upload Docker image to the remode Docker repository. (cmd docker login <  > && docker image tag <> , docker push )
-      * Run Docker Image to test and verify if the image is build correctly. (cmd: docker run)
-      * Files used: `Makefile`, `Dockerfile`,`app.py` & `requirement.txt`
-      * Depends on successful completion of `linting` job.
-3. `deploy-infrastructure`: Builds EC2 ubuntu server, requires 2 CPU, 8GB Memory, 20GB storage.
-      * Uses AWS CloudFormation . (cmd: aws cloudformation deploy --template-file .circleci/build_server.yml)
-      * files Used: .circleci/build_server.yml
-      * Depends on successful completion of `build_docker_image` job.
-4. `deploy_app_in_kube`: Installs, configures and start Kubernetis Cluster Services.This also deploys Docker containers in Kubernetis.
-      * Gets the IP address of the EC2 instance created by the previos job and store it in `inventory.txt`.
-      * runs Ansible playbook to performs following steps.
-            * Install Minikube, Docker, Kubectl
-            * Create Docker deployments in the Kube Pods. (cmd: `kubectl create deployment ..`)
-            * Expose the Container port to the Host port. (cmd: `kubectl expose ...`)
-            * Files used: `deploy_app.yml`,`inventory.txt` , `mail.yml`
-      * Depends on successful completion of `deploy-infrastructure` job.
- 5. `switch_to_new_production`: This switches the production link from old deployment to the new one.
-      * Get the IP address of the EC2 machine where the application was deployed.
-      * Builds index.html file with the new application link.
-      * Copy the index.html file to the S3 bucket
-      * Depends on successful completion of `deploy_app_in_kube` job.
+The whole pipeline is initiated and executed by running the capstone-devops project in CircleCI.  The jobs and its dependencies of this pipeline is as follows:  
+1.`linting`: This job is to verify for errors in the application setup in the Dockerfile  
+      * This job sets up the environment.  
+      * Installs the dependent libraries using `requirement.txt`. (cmd: make install)  
+      * Runs lint to verify for issues, uses hadolint. (cmd: make lint)  
+      * Files used `Makefile`, `Dockerfile`,`app.py` & `requirement.txt`  
+      * No other job dependency, this is the first job.  
+2. `build_docker_image`: builds docker image and publishes to the dockerhub repository.Uses docker:17.05.0-ce-git as its CircleCI image.  
+      * Setup remote Docker Engine.  
+      * Build Docker image.Uses files in deploy_app folder. (cmd: docker build --tag=<tag> <path>/deploy_app)  
+      * Upload Docker image to the remode Docker repository. (cmd docker login <  > && docker image tag <> , docker push )  
+      * Run Docker Image to test and verify if the image is build correctly. (cmd: docker run)  
+      * Files used: `Makefile`, `Dockerfile`,`app.py` & `requirement.txt`  
+      * Depends on successful completion of `linting` job.  
+3. `deploy-infrastructure`: Builds EC2 ubuntu server, requires 2 CPU, 8GB Memory, 20GB storage.  
+      * Uses AWS CloudFormation . (cmd: aws cloudformation deploy --template-file .circleci/build_server.yml)  
+      * files Used: .circleci/build_server.yml  
+      * Depends on successful completion of `build_docker_image` job.  
+4. `deploy_app_in_kube`: Installs, configures and start Kubernetis Cluster Services.This also deploys Docker containers in Kubernetis.  
+      * Gets the IP address of the EC2 instance created by the previos job and store it in `inventory.txt`.  
+      * runs Ansible playbook to performs following steps.  
+            * Install Minikube, Docker, Kubectl  
+            * Create Docker deployments in the Kube Pods. (cmd: `kubectl create deployment ..`)  
+            * Expose the Container port to the Host port. (cmd: `kubectl expose ...`)  
+            * Files used: `deploy_app.yml`,`inventory.txt` , `mail.yml`  
+      * Depends on successful completion of `deploy-infrastructure` job.  
+ 5. `switch_to_new_production`: This switches the production link from old deployment to the new one.  
+      * Get the IP address of the EC2 machine where the application was deployed.  
+      * Builds index.html file with the new application link.  
+      * Copy the index.html file to the S3 bucket.  
+      * Depends on successful completion of `deploy_app_in_kube` job.  
   
-### Project Execution steps:
-   1. Run the pipeline in CircleCI.
-   2. Manually initialize the Kubernetis Application Cluster.(cmd: `kubectl port-forward`)
-### Test the Bule/Green deployment.
-   1. Test verify the new deployment by clicking on the link `https://<bucket name>.s3.amazonaws.com`
-   2. Very the new IP and the contents.
+### Project Execution steps:  
+   1. Run the pipeline in CircleCI.  
+   2. Manually initialize the Kubernetis Application Cluster.(cmd: `kubectl port-forward`)  
+### Test the Bule/Green deployment.  
+   1. Test verify the new deployment by clicking on the link `https://<bucket name>.s3.amazonaws.com`  
+   2. Very the new IP and the contents.  
     
  
