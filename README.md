@@ -26,10 +26,10 @@ The project includes the following main tasks:
 * Install all necessary dependencies:  `make install`
 * Test the project's code using linting:  `make lint`
 * Above three tasks needs the following files to be created first and made available in the folder `deploy_app`:  
- - `Makefile`   
-- `Dockerfile`  
-- `requirements.txt`  
-- `app.py`  
+    - `Makefile`   
+    - `Dockerfile`  
+    - `requirements.txt`  
+    - `app.py`  
 ### 2. Containarize the application  in Docker and upload to the dockerhub         
 * Create Docker container for the [hello world](/deploy_app/app.py) application: [Dockerfile](deploy_app/Dockerfile)
 * Publish the Docker Container to a public Docker Registry:
@@ -46,7 +46,7 @@ The project includes the following main tasks:
 * use [New Production](https://<bucket name>.s3.amazonaws.com)
 
 ### CI/CD Tools and Cloud Services Used
-  #### AWS tools and services
+ #### AWS tools and services
 * [Amazon AWS](https://aws.amazon.com/) - Cloud services      
 * [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS   
 * [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as Code  
@@ -55,7 +55,7 @@ The project includes the following main tasks:
      
      
      
-  #### CI/CD Tools
+ #### CI/CD Tools
 * [Circle CI](https://www.circleci.com) - Cloud-based CI/CD platformservice
 * [Minikube](https://minikube.sigs.k8s.io) -  MiniKube, opensource Kubernetes Cluster
 * [Ansible](https://www.ansible.com/) . An opensource configuration and application deployment tool.
@@ -101,10 +101,10 @@ The whole pipeline is initiated and executed by running the capstone-devops proj
 4. `deploy_app_in_kube`: Installs, configures and start Kubernetis Cluster Services.This also deploys Docker containers in Kubernetis.  
  * Gets the IP address of the EC2 instance created by the previos job and store it in `inventory.txt`.  
  * runs Ansible playbook to performs following steps.  
-        * Install Minikube, Docker, Kubectl  
-        * Create Docker deployments in the Kube Pods. (cmd: `kubectl create deployment ..`)  
-        * Expose the Container port to the Host port. (cmd: `kubectl expose ...`)  
-        * Files used: `deploy_app.yml`,`inventory.txt` , `mail.yml`  
+   * Install Minikube, Docker, Kubectl  
+   * Create Docker deployments in the Kube Pods. (cmd: `kubectl create deployment ..`)  
+   * Expose the Container port to the Host port. (cmd: `kubectl expose ...`)  
+   * Files used: `deploy_app.yml`,`inventory.txt` , `mail.yml`  
   * Depends on successful completion of `deploy-infrastructure` job.  
  5. `switch_to_new_production`: This switches the production link from old deployment to the new one.  
  * Get the IP address of the EC2 machine where the application was deployed.  
