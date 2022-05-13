@@ -1,5 +1,5 @@
 Description: >
-  UdaPeople backend stack.
+  Build EC2 for Kubernetes deployment.
 Parameters:
   ID:
     Description: Unique identifier.
