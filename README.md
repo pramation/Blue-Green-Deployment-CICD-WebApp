@@ -25,7 +25,7 @@ The project includes the following main tasks:
 * Initialize the Python virtual environment:  `make setup`
 * Install all necessary dependencies:  `make install`
 * Test the project's code using linting:  `make lint`
-   * Above three tasks needs the following files to be created first and made available in the folder `deploy_app`:  
+* Above three tasks needs the following files to be created first and made available in the folder `deploy_app`:  
                * `Makefile`   
                * `Dockerfile`  
                * `requirements.txt`  
@@ -39,19 +39,24 @@ The project includes the following main tasks:
 * Install & configure minikube,docker,kubectl
 * Deploy the application in the kubernetes pods by pulling the docker images from the dockerhub
 * initialize the kubernetes cluster app manually
-# 4. Switch the application link to point to the new production
+### 4. Switch the application link to point to the new production
 * create a new index.html file with the new application link.
 * copy and replace the index.html file in the s3 location
-# 5. Verify the new deployment
-* use [New Production](https://Nbucket name>.s3.amazonaws.com)
+### 5. Verify the new deployment
+* use [New Production](https://<bucket name>.s3.amazonaws.com)
 
-### CI/CD Tools and Cloud Services
-  #### AWS tools and services used
-     * [Amazon AWS](https://aws.amazon.com/) - Cloud services
-     * [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS
-     * [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as Code
-     * EC2
-     * S3
+### CI/CD Tools and Cloud Services Used
+  #### AWS tools and services
+     * [Amazon AWS](https://aws.amazon.com/) - Cloud services  
+     
+     * [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS  
+     
+     * [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as Code  
+     
+     * EC2  
+     
+     * S3  
+     
   #### CI/CD Tools
      * [Circle CI](https://www.circleci.com) - Cloud-based CI/CD platformservice
      * [Minikube](https://minikube.sigs.k8s.io) -  MiniKube, opensource Kubernetes Cluster
