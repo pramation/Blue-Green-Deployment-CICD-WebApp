@@ -26,10 +26,10 @@ The project includes the following main tasks:
 * Install all necessary dependencies:  `make install`
 * Test the project's code using linting:  `make lint`
    * Above three tasks needs the following files to be created first and made available in the folder `deploy_app`:
-               - `Makefile` 
-               - `Dockerfile`
-               - `requirements.txt`
-               - `app.py`
+               - `Makefile`   
+               - `Dockerfile`  
+               - `requirements.txt`  
+               - `app.py`  
 # 2. Containarize the application  in Docker and upload to the dockerhub         
 * Create Docker container for the [hello world](/deploy_app/app.py) application: [Dockerfile](deploy_app/Dockerfile)
 * Publish the Docker Container to a public Docker Registry:
@@ -43,7 +43,7 @@ The project includes the following main tasks:
 * create a new index.html file with the new application link.
 * copy and replace the index.html file in the s3 location
 # 5. Verify the new deployment
-* use [New Production](https://devops-capstone-s3.s3.amazonaws.com)
+* use [New Production](https://Nbucket name>.s3.amazonaws.com)
 
 ### CI/CD Tools and Cloud Services
   #### AWS tools and services used
