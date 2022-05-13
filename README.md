@@ -13,7 +13,7 @@ demo app ["hello world"](./deploy_app/app.py), using [CircleCI](https://www.circ
  We use blue/green stragety to switch to the new production deployement.
 
 Majority of the project's tasks are in the CircliCI configuration. All the application related files are in `deploy_app` folder and 
-the files replated to kubernetes deployement is in `ansible` folder.
+the files related to kubernetes deployement is in `ansible` folder.
 
 
 ### Project Tasks
@@ -46,14 +46,19 @@ The project includes the following main tasks:
 * use [New Production](https://devops-capstone-s3.s3.amazonaws.com)
 
 ### CI/CD Tools and Cloud Services
-
-* [Circle CI](https://www.circleci.com) - Cloud-based CI/CD service
-* [Amazon AWS](https://aws.amazon.com/) - Cloud services
-* [Minikube](https://minikube.sigs.k8s.io) - MiniKube
-* [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS
-* [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as Code
-* [kubectl](https://kubernetes.io/docs/reference/kubectl/) - a command-line tool to control Kubernetes clusters
-* [Docker Hub](https://hub.docker.com/repository/docker/pramation/capstoneproj) - Container images repository service
+  #### AWS tools and services used
+     * [Amazon AWS](https://aws.amazon.com/) - Cloud services
+     * [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS
+     * [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as Code
+     * EC2
+     * S3
+  #### CI/CD Tools
+     * [Circle CI](https://www.circleci.com) - Cloud-based CI/CD platformservice
+     * [Minikube](https://minikube.sigs.k8s.io) -  MiniKube, opensource Kubernetes Cluster
+     * [Ansible](https://www.ansible.com/) . An opensource configuration and application deployment tool.
+     * [kubectl](https://kubernetes.io/docs/reference/kubectl/) - a command-line tool to control Kubernetes clusters
+     * [Docker](https://www.docker.com/) - Packges application and its dependinces in a self contained container.
+     * [Docker Hub](https://hub.docker.com/repository/docker/pramation/capstoneproj) - Container images repository service
 
 #### CicleCI Variables
 
