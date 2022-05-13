@@ -102,11 +102,6 @@ jobs:
       - run:
           name: Install dependencies 
           command: |
-            #apk add --update ansible
-            #apk add --no-cache curl
-            #apk add --update tar gzip
-            #apk add --no-cache openssh-client
-            #apk add --no-cache --upgrade bash
             pip install awscli
       - run:
           name: get server-ip
@@ -127,7 +122,8 @@ jobs:
             export EXTERNAL_IP="54.209.246.249"
             #export EXTERNAL_IP="`cat inventory.txt|grep -v web`"
             export XYZ="<meta http-equiv=\"refresh\" content=\"7; url='http://${EXTERNAL_IP}:8080'\" />"
-            echo ${XYZ}
+            echo ${XYZ} > ./index.html
+            cat ./index.html
             #echo "<meta http-equiv=\"refresh\" content=\"7; url='http://${EXTERNAL_IP}:8080'\" />">index.html
             #aws s3 cp ./index.html "s3://devops-capstone-s3 
       - destroy-environment:
