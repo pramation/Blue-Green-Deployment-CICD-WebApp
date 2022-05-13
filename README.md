@@ -26,10 +26,10 @@ The project includes the following main tasks:
 * Install all necessary dependencies:  `make install`
 * Test the project's code using linting:  `make lint`
 * Above three tasks needs the following files to be created first and made available in the folder `deploy_app`:  
-               * `Makefile`   
-               * `Dockerfile`  
-               * `requirements.txt`  
-               * `app.py`  
+ - `Makefile`   
+- `Dockerfile`  
+- `requirements.txt`  
+- `app.py`  
 ### 2. Containarize the application  in Docker and upload to the dockerhub         
 * Create Docker container for the [hello world](/deploy_app/app.py) application: [Dockerfile](deploy_app/Dockerfile)
 * Publish the Docker Container to a public Docker Registry:
@@ -48,20 +48,20 @@ The project includes the following main tasks:
 ### CI/CD Tools and Cloud Services Used
   #### AWS tools and services
 * [Amazon AWS](https://aws.amazon.com/) - Cloud services      
- * [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS   
-     * [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as Code  
-     * EC2  
-     * S3  
+* [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS   
+* [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as Code  
+* EC2  
+* S3  
      
      
      
   #### CI/CD Tools
-     * [Circle CI](https://www.circleci.com) - Cloud-based CI/CD platformservice
-     * [Minikube](https://minikube.sigs.k8s.io) -  MiniKube, opensource Kubernetes Cluster
-     * [Ansible](https://www.ansible.com/) . An opensource configuration and application deployment tool.
-     * [kubectl](https://kubernetes.io/docs/reference/kubectl/) - a command-line tool to control Kubernetes clusters
-     * [Docker](https://www.docker.com/) - Packges application and its dependinces in a self contained container.
-     * [Docker Hub](https://hub.docker.com/repository/docker/pramation/capstoneproj) - Container images repository service
+* [Circle CI](https://www.circleci.com) - Cloud-based CI/CD platformservice
+* [Minikube](https://minikube.sigs.k8s.io) -  MiniKube, opensource Kubernetes Cluster
+* [Ansible](https://www.ansible.com/) . An opensource configuration and application deployment tool.
+* [kubectl](https://kubernetes.io/docs/reference/kubectl/) - a command-line tool to control Kubernetes clusters
+* [Docker](https://www.docker.com/) - Packges application and its dependinces in a self contained container.
+* [Docker Hub](https://hub.docker.com/repository/docker/pramation/capstoneproj) - Container images repository service
 
 ### CicleCI Variables
 
