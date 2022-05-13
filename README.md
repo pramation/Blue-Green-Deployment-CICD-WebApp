@@ -47,15 +47,13 @@ The project includes the following main tasks:
 
 ### CI/CD Tools and Cloud Services Used
   #### AWS tools and services
-     * [Amazon AWS](https://aws.amazon.com/) - Cloud services  
-     
-     * [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS  
-     
+     * [Amazon AWS](https://aws.amazon.com/) - Cloud services      
+     * [AWS CLI](https://aws.amazon.com/cli/) - Command-line tool for AWS   
      * [CloudFormation](https://aws.amazon.com/cloudformation/) - Infrastructure as Code  
-     
      * EC2  
-     
      * S3  
+     
+     
      
   #### CI/CD Tools
      * [Circle CI](https://www.circleci.com) - Cloud-based CI/CD platformservice
