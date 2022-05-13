@@ -119,12 +119,11 @@ jobs:
             cd .circleci/ansible
             echo "Contents  of the inventory.txt file is --------"
             cat inventory.txt
-            export EXTERNAL_IP="54.209.246.249"
-            #export EXTERNAL_IP="`cat inventory.txt|grep -v web`"
+            #export EXTERNAL_IP="54.209.246.249"
+            export EXTERNAL_IP="`cat inventory.txt|grep -v web`"
             export XYZ="<meta http-equiv=\"refresh\" content=\"7; url='http://${EXTERNAL_IP}:8080'\" />"
             echo ${XYZ} > ./index.html
             cat ./index.html
-            #echo "<meta http-equiv=\"refresh\" content=\"7; url='http://${EXTERNAL_IP}:8080'\" />">index.html
             aws s3 cp ./index.html "s3://devops-capstone-s3"
       - destroy-environment:
           workflow-id: "devops-capstone-${CIRCLE_WORKFLOW_ID:0:7}" 
@@ -196,12 +195,13 @@ jobs:
 workflows:
   default:
     jobs:
-      #- linting
-      #- build_docker_image: 
-      #   requires: [linting]
-      #- deploy-infrastructure: 
-      #    requires: [build_docker_image]
-      #- deploy_app_in_kube:
-      #    requires: [deploy-infrastructure]
-      - switch_to_new_prod
+      - linting
+      - build_docker_image: 
+         requires: [linting]
+      - deploy-infrastructure: 
+          requires: [build_docker_image]
+      - deploy_app_in_kube:
+          requires: [deploy-infrastructure]
+      - switch_to_new_prod:
+          requires: [deploy_app_in_kube]
 
